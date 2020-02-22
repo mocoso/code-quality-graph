@@ -5,20 +5,16 @@ Error2: Axes not showing for some reason. Maybe I'll just move them to the front
   <meta charset="utf-8">
   <script src="https://unpkg.com/rough-viz@1.0.5"></script>
   <style>
-	    .wrapper {
-	      display: flex;
-	      flex: wrap;
-        order: row;
+	    .graph {
+	      width: 900px;
+        margin: 50px auto 50px auto;
 	    }
   </style>
 </head>
  
 <body>
-  <br><br>
-  <div class="wrapper">
-    <div id="vis0"></div>
-    <div id="vis1"></div>
-    </div>
+  <div class="graph" id="vis0"></div>
+  <div class="graph" id="vis1"></div>
   <script> 
     let ttop = 50;
     let rright = 20;
@@ -31,11 +27,10 @@ new roughViz.Line(
     element: '#vis0',
     data: 'https://raw.githubusercontent.com/mocoso/code-quality-graph/master/graph-data.csv',
     title: "Productivity over time (not scientific)",
-    y: 'High Quality Code',
     y2: 'Low Quality Code',
-    colors: ['green', 'orange'],
+    colors: ['orange'],
     strokeWidth: 3,
-    circle: false,
+    circle: true,
     yLabel: 'Productivity',
     xLabel: 'Time',
     labelFontSize: '1rem',
@@ -49,6 +44,27 @@ new roughViz.Line(
 );
 
 
+new roughViz.Line(
+  {
+    element: '#vis1',
+    data: 'https://raw.githubusercontent.com/mocoso/code-quality-graph/master/graph-data.csv',
+    title: "Productivity over time (not scientific)",
+    y: 'High Quality Code',
+    y2: 'Low Quality Code',
+    colors: ['green', 'orange'],
+    strokeWidth: 3,
+    circle: true,
+    yLabel: 'Productivity',
+    xLabel: 'Time',
+    labelFontSize: '1rem',
+    axisFontSize: 0,
+    axisStrokeWidth: 1.5,
+    fillWeight: 1,
+    height: 400,
+    width: 800,
+    titleFontSize: '1rem',
+  }
+);
   </script>
 </body>
    
