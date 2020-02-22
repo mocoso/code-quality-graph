@@ -16,13 +16,10 @@ Error2: Axes not showing for some reason. Maybe I'll just move them to the front
   <div class="graph" id="vis0"></div>
   <div class="graph" id="vis1"></div>
   <script> 
-new roughViz.Line(
-  {
-    element: '#vis0',
+
+let standardOptions = {
     data: 'https://raw.githubusercontent.com/mocoso/code-quality-graph/master/graph-data.csv',
     title: "Productivity over time (not scientific)",
-    y2: 'Low Quality Code',
-    colors: ['orange'],
     strokeWidth: 3,
     circle: true,
     yLabel: 'Productivity',
@@ -34,30 +31,32 @@ new roughViz.Line(
     height: 400,
     width: 800,
     titleFontSize: '1rem',
-  }
+}
+
+new roughViz.Line(
+  Object.assign(
+    {},
+    standardOptions,
+    {
+      element: '#vis0',
+      y2: 'Low Quality Code',
+      colors: ['orange'],
+    }
+  )
 );
 
 
 new roughViz.Line(
-  {
-    element: '#vis1',
-    data: 'https://raw.githubusercontent.com/mocoso/code-quality-graph/master/graph-data.csv',
-    title: "Productivity over time (not scientific)",
-    y: 'High Quality Code',
-    y2: 'Low Quality Code',
-    colors: ['green', 'orange'],
-    strokeWidth: 3,
-    circle: true,
-    yLabel: 'Productivity',
-    xLabel: 'Time',
-    labelFontSize: '1rem',
-    axisFontSize: 0,
-    axisStrokeWidth: 1.5,
-    fillWeight: 1,
-    height: 400,
-    width: 800,
-    titleFontSize: '1rem',
-  }
+  Object.assign(
+    {},
+    standardOptions,
+    {
+      element: '#vis1',
+      y: 'High Quality Code',
+      y2: 'Low Quality Code',
+      colors: ['green', 'orange'],
+    }
+  )
 );
   </script>
 </body>
